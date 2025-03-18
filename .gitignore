@@ -1,0 +1,4 @@
+*.fc
+_build/
+*.bak
+*.opam

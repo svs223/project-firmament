@@ -1,0 +1,30 @@
+type literal = 
+  | LiteralInt of int64
+  | LiteralFloat of float
+  | LiteralBool of bool
+  | LiteralString of string
+  [@@deriving show, eq, ord]
+and unary = Lex.token * expr
+[@@deriving show, eq, ord]
+
+and binary = expr * Lex.token * expr
+[@@deriving show, eq, ord]
+and comparison = Less of binary * binary | LessOrEq of binary * binary | Greater of binary * binary | GreaterOrEq of binary * binary
+[@@deriving show, eq, ord]
+and equality = Equal of comparison * comparison | NotEqual of comparison * comparison
+[@@deriving show, eq, ord]
+and term = Plus of factor * factor | Minus of factor * factor 
+[@@deriving show, eq, ord]
+and factor = Mult of term * term | Div of term * term
+[@@deriving show, eq, ord]
+
+and primary = Number of literal | String of literal | Float of literal | True | False | Clause of expr
+[@@deriving show, eq, ord]
+and expr = 
+  | Literal of literal option
+  | Unary of unary
+  | Factor of factor
+  | Term of term
+  | Binary of binary
+  | Grouping of expr
+  [@@deriving show, eq, ord]

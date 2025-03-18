@@ -1,0 +1,7 @@
+(executable
+ (public_name fcc)
+ (name main)
+ (libraries func)
+ ;(modules Fctype Token Main)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))

@@ -1,0 +1,5 @@
+(library
+ (name func)
+ ; (libraries)
+ (preprocess
+  (pps ppx_deriving.show ppx_deriving.ord ppx_deriving.eq)))
